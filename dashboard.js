@@ -16,8 +16,8 @@ Keen.ready(function(){
     targetProperty: "light-trigger",
     interval: "hourly",
     timeframe: {
-      start: "2017-05-18T00:00:00.000Z",
-      end: "2017-06-02T00:00:00.000Z"
+      start: "2017-06-20T00:00:00.000Z",
+      end: "2017-06-21T00:00:00.000Z"
     }
     // timeframe: "today"
   });
@@ -26,7 +26,7 @@ Keen.ready(function(){
     chartType: "linechart",
     title: " ",
     height: 300,
-    width: "auto"
+    width: 660
   });
 
   // ----------------------------------------
@@ -37,8 +37,8 @@ Keen.ready(function(){
     interval: "hourly",
     groupBy: "temperature",
      timeframe: {
-      start: "2017-05-18T00:00:00.000Z",
-      end: "2017-06-02T00:00:00.000Z"
+      start: "2017-06-20T00:00:00.000Z",
+      end: "2017-06-21T00:00:00.000Z"
     }
   });
   client.draw(pageviews_timeline, document.getElementById("chart-07"), {
@@ -56,6 +56,39 @@ Keen.ready(function(){
       isStacked: true
     }
   });
+
+  // ----------------------------------------
+  // Pageviews Area Chart
+  // ----------------------------------------
+  var latency = new Keen.Query("average", {
+    eventCollection: "temperature",
+    targetProperty: "temperature",
+    interval: "hourly",
+    timeframe: {
+      start: "2017-06-20T00:00:00.000Z",
+      end: "2017-06-21T00:00:00.000Z"
+    }
+  });
+  client.draw(latency, document.getElementById("chart-08"), {
+    chartType: "areachart",
+    title: false,
+    height: 250,
+    width: 725,
+    chartOptions: {
+      chartArea: {
+        height: "85%",
+        left: "5%",
+        top: "5%",
+        width: "80%"
+      },
+      isStacked: true
+    }
+  });
+
+
+
+
+
 
   // ----------------------------------------
   // Sound Trigger Timeline
@@ -86,8 +119,8 @@ Keen.ready(function(){
     eventCollection: "temperature",
     targetProperty: "temperature",
     timeframe: {
-      start: "2017-05-18T00:00:00.000Z",
-      end: "2017-06-02T00:00:00.000Z"
+      start: "2017-06-18T00:00:00.000Z",
+      end: "2017-06-21T00:00:00.000Z"
     }
     //timeframe: "today"
   });
@@ -113,8 +146,8 @@ Keen.ready(function(){
     eventCollection: "temperature",
     targetProperty: "temperature",
     timeframe: {
-      start: "2017-05-18T00:00:00.000Z",
-      end: "2017-06-02T00:00:00.000Z"
+      start: "2017-06-18T00:00:00.000Z",
+      end: "2017-06-21T00:00:00.000Z"
     }
     // timeframe: "today"
   });
@@ -124,7 +157,7 @@ Keen.ready(function(){
     'angleOffset':-125,
     'readOnly':true,
     'min':0,
-    'max':90,
+    'max':20000,
     'fgColor': Keen.Dataviz.defaults.colors[0]
   });
 
