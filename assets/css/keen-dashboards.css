@@ -28,6 +28,7 @@ body.application div[class^="col-"] div[class^="col-"],
 .keen-dashboard div[class^="col-"] div[class^="col-"] {
   padding-left: 15px;
   padding-right: 15px;
+  color: #fbfbfb;
 }
 
 body.application hr,

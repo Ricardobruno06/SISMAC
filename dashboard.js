@@ -16,8 +16,8 @@ Keen.ready(function(){
     targetProperty: "light-trigger",
     interval: "hourly",
     timeframe: {
-      start: "2017-06-20T00:00:00.000Z",
-      end: "2017-06-21T00:00:00.000Z"
+      start: "2017-06-21T10:00:00.000",
+      end: "2017-06-22T10:00:00.000"
     },
     timezone: "America/Sao_Paulo"
     // timeframe: "today"
@@ -37,9 +37,9 @@ Keen.ready(function(){
    eventCollection: "temperature",
     interval: "hourly",
     groupBy: "temperature",
-     timeframe: {
-      start: "2017-06-20T00:00:00.000Z",
-      end: "2017-06-22T00:00:00.000Z"
+   timeframe: {
+      start: "2017-06-21T10:00:00.000",
+      end: "2017-06-22T10:00:00.000"
     },
     timezone: "America/Sao_Paulo"
   });
@@ -67,8 +67,8 @@ Keen.ready(function(){
     targetProperty: "temperature",
     interval: "hourly",
     timeframe: {
-      start: "2017-06-21T00:00:00.000Z",
-      end: "2017-06-22T00:00:00.000Z"
+      start: "2017-06-21T10:00:00.000",
+      end: "2017-06-22T10:00:00.000"
     },
     timezone: "America/Sao_Paulo"
   });
@@ -101,9 +101,9 @@ Keen.ready(function(){
 ],
     interval: "minutely",
     target_property: "temperature",
-    timeframe: {
-      start: "2017-06-21T00:00:00.000Z",
-      end: "2017-06-22T00:00:00.000Z"
+   timeframe: {
+      start: "2017-06-21T10:00:00.000",
+      end: "2017-06-22T10:00:00.000"
     },
     timezone: "America/Sao_Paulo"
   });
@@ -114,7 +114,7 @@ Keen.ready(function(){
      chartType: "areachart",
     title: false,
     height: 250,
-    width: "auto",
+    width: 725,
 
      chartOptions: {
       chartArea: {
@@ -129,6 +129,34 @@ Keen.ready(function(){
   });
   
 });
+
+
+  var latency = new Keen.Query("count", {
+    eventCollection: "temperature",
+    interval: "hourly",
+    timeframe: {
+      start: "2017-06-21T10:00:00.000",
+      end: "2017-06-22T10:00:00.000"
+    },
+    timezone: "America/Sao_Paulo"
+  });
+  client.draw(latency, document.getElementById("chart-13"), {
+    chartType: "areachart",
+    title: false,
+    height: 300,
+    width: 725,
+    chartOptions: {
+      chartArea: {
+        height: "85%",
+        left: "5%",
+        top: "5%",
+        width: "80%"
+      },
+      isStacked: true
+    }
+  });
+
+
 
 
 
@@ -155,6 +183,51 @@ Keen.ready(function(){
     width: "auto"
   });
 
+
+
+
+
+  //
+  //max
+  //
+
+  Keen.ready(function(){
+  
+  var query = new Keen.Query("maximum", {
+    event_collection: "temperature",
+    target_property: "temperature",
+    timeframe: {
+      start: "2017-06-21T10:00:00.000",
+      end: "2017-06-22T10:00:00.000"
+    },
+    timezone: "America/Sao_Paulo"
+  });
+  
+  client.draw(query, document.getElementById("chart-10"), {
+    
+  });
+  
+});
+//
+//Min
+//
+  Keen.ready(function(){
+  
+  var query = new Keen.Query("minimum", {
+    event_collection: "temperature",
+    target_property: "temperature",
+   timeframe: {
+      start: "2017-06-21T10:00:00.000",
+      end: "2017-06-22T10:00:00.000"
+    },
+    timezone: "America/Sao_Paulo"
+  });
+  
+  client.draw(query, document.getElementById("chart-11"), {
+  });
+  
+});
+
   // ----------------------------------------
   // temp
   // ----------------------------------------
@@ -162,9 +235,9 @@ Keen.ready(function(){
   var temperature = new Keen.Query("average", {
     eventCollection: "temperature",
     targetProperty: "temperature",
-    timeframe: {
-      start: "2017-06-18T00:00:00.000Z",
-      end: "2017-06-21T12:00:00.000Z"
+   timeframe: {
+      start: "2017-06-21T10:00:00.000",
+      end: "2017-06-22T10:00:00.000"
     },
     timezone: "America/Sao_Paulo"
     //timeframe: "today"
@@ -191,8 +264,8 @@ Keen.ready(function(){
     eventCollection: "temperature",
     targetProperty: "temperature",
     timeframe: {
-      start: "2017-06-18T00:00:00.000Z",
-      end: "2017-06-21T12:00:00.000Z"
+      start: "2017-06-21T10:00:00.000",
+      end: "2017-06-22T10:00:00.000"
     },
     timezone: "America/Sao_Paulo"
     // timeframe: "today"
@@ -210,6 +283,11 @@ Keen.ready(function(){
   client.run(humidity, function(err, res){
     $("#chart-02").val(res.result).trigger('change');
   });
+
+
+
+
+
 
   // ----------------------------------------
   // Light
