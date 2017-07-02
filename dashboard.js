@@ -5,6 +5,26 @@ var client = new Keen({
 });
 
 
+var data = new Date();
+
+
+            milseg = data.getMilliseconds()
+            segundo = data.getSeconds();
+            minuto = data.getMinutes();
+            hora = data.getHours();
+            dia = data.getDate();
+            mes = data.getMonth()
+            ano = data.getFullYear();
+
+            mes = mes+1;
+
+          dataend = (ano+"-"+mes+"-"+dia+"T"+hora+":"+minuto+":"+segundo+"."+milseg);
+          dia = dia-1;
+          datastart = (ano+"-"+mes+"-"+dia+"T"+hora+":"+minuto+":"+segundo+"."+milseg);
+          
+          
+
+
 Keen.ready(function(){
 
 
@@ -16,7 +36,7 @@ Keen.ready(function(){
     targetProperty: "light-trigger",
     interval: "hourly",
     timeframe: {
-      start: "2017-06-21T10:00:00.000",
+      start: "2017-06-12T10:00:00.000",
       end: "2017-06-22T10:00:00.000"
     },
     timezone: "America/Sao_Paulo"
@@ -38,8 +58,8 @@ Keen.ready(function(){
     interval: "hourly",
     groupBy: "temperature",
    timeframe: {
-      start: "2017-06-21T10:00:00.000",
-      end: "2017-06-22T10:00:00.000"
+      start: datastart,
+      end: dataend
     },
     timezone: "America/Sao_Paulo"
   });
@@ -67,8 +87,8 @@ Keen.ready(function(){
     targetProperty: "temperature",
     interval: "hourly",
     timeframe: {
-      start: "2017-06-21T10:00:00.000",
-      end: "2017-06-22T10:00:00.000"
+      start: datastart,
+      end: dataend
     },
     timezone: "America/Sao_Paulo"
   });
@@ -102,8 +122,8 @@ Keen.ready(function(){
     interval: "minutely",
     target_property: "temperature",
    timeframe: {
-      start: "2017-06-21T10:00:00.000",
-      end: "2017-06-22T10:00:00.000"
+      start: datastart,
+      end: dataend
     },
     timezone: "America/Sao_Paulo"
   });
@@ -135,8 +155,8 @@ Keen.ready(function(){
     eventCollection: "temperature",
     interval: "hourly",
     timeframe: {
-      start: "2017-06-21T10:00:00.000",
-      end: "2017-06-22T10:00:00.000"
+      start: datastart,
+      end: dataend
     },
     timezone: "America/Sao_Paulo"
   });
@@ -170,8 +190,8 @@ Keen.ready(function(){
     targetProperty: "sound-trigger",
     interval: "hourly",
     timeframe: {
-      start: "2017-05-18T00:00:00.000Z",
-      end: "2017-06-02T00:00:00.000Z"
+      start: datastart,
+      end: dataend
     }
     // timeframe: "today"
   });
@@ -197,8 +217,8 @@ Keen.ready(function(){
     event_collection: "temperature",
     target_property: "temperature",
     timeframe: {
-      start: "2017-06-21T10:00:00.000",
-      end: "2017-06-22T10:00:00.000"
+      start: datastart,
+      end: dataend
     },
     timezone: "America/Sao_Paulo"
   });
@@ -217,8 +237,8 @@ Keen.ready(function(){
     event_collection: "temperature",
     target_property: "temperature",
    timeframe: {
-      start: "2017-06-21T10:00:00.000",
-      end: "2017-06-22T10:00:00.000"
+      start: datastart,
+      end: dataend
     },
     timezone: "America/Sao_Paulo"
   });
@@ -236,8 +256,8 @@ Keen.ready(function(){
     eventCollection: "temperature",
     targetProperty: "temperature",
    timeframe: {
-      start: "2017-06-21T10:00:00.000",
-      end: "2017-06-22T10:00:00.000"
+      start: datastart,
+      end: dataend
     },
     timezone: "America/Sao_Paulo"
     //timeframe: "today"
@@ -264,8 +284,8 @@ Keen.ready(function(){
     eventCollection: "temperature",
     targetProperty: "temperature",
     timeframe: {
-      start: "2017-06-21T10:00:00.000",
-      end: "2017-06-22T10:00:00.000"
+      start: datastart,
+      end: dataend
     },
     timezone: "America/Sao_Paulo"
     // timeframe: "today"
